@@ -1,0 +1,142 @@
+
+/* Musics.css */
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.page {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(
+      to right,
+      rgb(29 29 120 / 50%),
+      rgb(176 176 191 / 50%)
+    ),url(https://images.pexels.com/photos/5764283/pexels-photo-5764283.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
+    background-size: cover;
+    background-position: top;
+  }
+ 
+  .Musiccontain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 20px;
+  }
+  
+  .musicclass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding: 10px; */
+    background-color: rgba(117, 132, 134, 0.4);
+    border-radius: 10px;
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+    border-radius: 0.5em;
+    overflow: hidden;
+  }
+  
+  .music-image {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    /* border-radius: 50%; */
+  }
+  
+  .musicTitle {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .musicCard {
+    margin-top: 50px;
+    text-align: center;
+  } 
+ /* Music.css */
+.pageMusic {
+    min-width: 100vw;
+    height: 89.6vh;
+    background-image: linear-gradient(
+        to right,
+        rgb(29 29 120 / 50%),
+        rgb(176 176 191 / 50%)
+      ),
+      url(https://images.pexels.com/photos/5764283/pexels-photo-5764283.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
+    background-size: cover;
+    background-position: center;
+    padding-top: 3.5em;
+    
+  }
+  
+  .containerAlbum {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    margin-right: 2em;
+    
+  }
+  
+  .imagAlbum {
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+  }
+  
+  .page ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  audio {
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  h2 {
+    text-align: center;
+  }
+   
+
+ 
+
+   @media (max-width: 768px) {
+    .pageMusic {
+      min-width: 100vw;
+      height: 90vh;
+     
+      
+    }
+    .containerAlbum {
+      margin-right: 0;
+    }
+    .imagAlbum {
+      width: 350px;
+     height: 450px;
+      border-radius: 10px;
+      object-fit: cover;
+
+    }
+   
+    audio {
+      margin-top: 20px;
+      width: 350px;
+    }
+    #widgetPage{
+      width: 400px;
+      margin: auto;
+    }
+  
+  }
+  
+  @media (max-height: 700px) {
+    .imagAlbum {
+      height: 300px;
+    }
+    
+  }
