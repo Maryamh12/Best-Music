@@ -1,0 +1,281 @@
+/* layout.css - header and footer */
+
+/* ---------- Header ---------- */
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--header-h);
+  background: rgba(11, 12, 16, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* On the home page the header floats over the video */
+.siteHeader.is-transparent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
+  border-bottom-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.headercontainer {
+  position: relative;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 999px;
+}
+
+.brandLogo {
+  width: 40px;
+  height: 40px;
+  filter: invert(1); /* the logo is black, we need it white on dark */
+  transition: transform 0.4s ease;
+}
+
+.brand:hover .brandLogo {
+  transform: rotate(-20deg);
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+/* Small search box in the header */
+.headerSearch {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+}
+
+.headerSearch svg {
+  position: absolute;
+  left: 14px;
+  color: var(--subtle);
+  pointer-events: none;
+}
+
+.headerSearch input {
+  width: 100%;
+  height: 40px;
+  padding: 0 16px 0 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.headerSearch input::placeholder {
+  color: var(--subtle);
+}
+
+.headerSearch input:focus,
+.headerSearch input:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+/* Navigation links */
+.mainNav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.navLink.active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navBadge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu button (only on small screens) */
+.menuToggle {
+  display: none;
+  margin-left: auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background-color 0.2s ease;
+}
+
+.menuToggle:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+@media (max-width: 760px) {
+  .siteHeader {
+    height: auto;
+    min-height: var(--header-h);
+  }
+
+  .headercontainer {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+
+  .menuToggle {
+    display: inline-flex;
+  }
+
+  /* Search goes to its own row under the logo */
+  .headerSearch {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+  }
+
+  /* Links become a dropdown panel */
+  .mainNav {
+    position: absolute;
+    top: 64px;
+    left: 16px;
+    right: 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  }
+
+  .mainNav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .navLink {
+    padding: 12px 14px;
+    border-radius: 10px;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.siteFooter {
+  border-top: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+
+.footerText-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footerText-link:hover {
+  color: var(--text);
+}
+
+.footer-nav {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+}
+
+.footer-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.social-icon {
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 16px;
+  }
+}

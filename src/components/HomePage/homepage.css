@@ -1,0 +1,201 @@
+/* homepage.css - the Home page (video background + search) */
+
+#hpage {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 24px) 24px 64px;
+}
+
+#video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark layer on the video so the text is easy to read.
+   It fades into the page color at the bottom. */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(700px 400px at 50% 40%, rgba(255, 176, 32, 0.14), transparent 70%),
+    linear-gradient(180deg, rgba(11, 12, 16, 0.6) 0%, rgba(11, 12, 16, 0.78) 65%, var(--bg) 100%);
+}
+
+.heroContent {
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  animation: heroIn 0.7s ease both;
+}
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.heroTitle span {
+  display: block;
+  color: var(--accent);
+}
+
+.heroText {
+  max-width: 520px;
+  color: #c9cdd6;
+  font-size: clamp(1rem, 2.2vw, 1.15rem);
+}
+
+/* Search box: white pill with the button inside */
+.searchForm {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 999px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.2s ease;
+}
+
+.searchForm:focus-within {
+  box-shadow: 0 0 0 4px var(--accent-soft), 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 24px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.inputsign {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0 12px 0 48px;
+  border: none;
+  background: transparent;
+  color: #111;
+  font-size: 1.05rem;
+  outline: none;
+}
+
+.inputsign::placeholder {
+  color: #6b7280;
+}
+
+.buttonsign {
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.buttonsign:hover {
+  background: var(--accent-hover);
+}
+
+.buttonsign:active {
+  transform: scale(0.96);
+}
+
+.formError {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffd28a;
+  font-size: 0.95rem;
+}
+
+/* "Try: Adele, Coldplay ..." */
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.chip:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+@media (max-width: 520px) {
+  #hpage {
+    padding: calc(var(--header-h) + 16px) 16px 48px;
+  }
+
+  .searchIcon {
+    left: 20px;
+  }
+
+  .inputsign {
+    padding-left: 42px;
+    font-size: 1rem;
+  }
+
+  .buttonsign {
+    padding: 0 18px;
+  }
+}
+
+/* No moving video for people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  #video-background {
+    display: none;
+  }
+}
+
+/* The whole pill already shows a focus ring, so the input itself does not need one */
+.inputsign:focus-visible {
+  outline: none;
+}

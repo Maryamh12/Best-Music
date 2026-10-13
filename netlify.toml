@@ -1,0 +1,15 @@
+# Netlify settings (read automatically when you deploy from GitHub)
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Send every address to index.html, so React Router can show the right page
+# (without this, refreshing /musics/adele gives "Page not found").
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
